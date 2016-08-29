@@ -25,3 +25,8 @@ public static String reverseStr(String str){
     return strBuild.toString();
 }
 }
+
+/*
+Output -- 
+reverse string is -- tseb eht si seires 0006a aremac ynoS
+*/
