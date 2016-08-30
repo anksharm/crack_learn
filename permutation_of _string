@@ -1,0 +1,39 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+     String permutable_str = "abc" ;
+     
+     permute(permutable_str.toCharArray(), 0, permutable_str.length()-1);
+     
+	}
+	
+	public static void permute(char[] str, int start, int end){
+        if(start == end){
+            System.out.println("-----------" + String.valueOf(str));
+        }	    
+        
+        for(int i = start; i<=end; i++){
+            swap(str, start, i);
+            permute(str,start+1, i);
+            swap(str,start, i);
+        }
+       System.out.println("^^^^^^^^^^^^^^" +  String.valueOf(str));
+
+	}
+	
+	public static void swap(char[] str1, int t, int q){
+	    char tmp = str1[t];
+	    str1[t] = str1[q];
+	    str1[q] = tmp;
+	}
+	
+}
+
