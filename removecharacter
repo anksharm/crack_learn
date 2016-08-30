@@ -1,0 +1,28 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		System.out.println(removeChar("remove character", 'c'));
+	}
+	
+	public static String removeChar(String str, char value){
+	    if(str == null)
+	    {
+	        return "";
+	    }
+	    
+	    StringBuilder strBuild = new StringBuilder ();
+        for (int i = 0; i < str.length (); i++) {
+            char ch = str.charAt (i);
+            if (ch == value)
+                continue;
+            strBuild.append (ch);
+        }
+        return strBuild.toString ();
+	}
+}
