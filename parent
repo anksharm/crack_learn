@@ -24,3 +24,6 @@ class Child extends parent
 	     obj.attributes();
 	 	}
 }
+
+
+//output is : check from parent 10   name is abc
