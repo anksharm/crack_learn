@@ -1,0 +1,48 @@
+
+public class PatternFind {
+
+	public static void checkMatch(String str, String pattern){
+		int i; 
+		int j=0; 
+		int m;
+		
+		for(i=0; i<str.length();i++){
+			if(str.charAt(i) == pattern.charAt(0)){	
+				for(j=1, m=i+1;j<pattern.length(); j++, m++){
+					//System.out.println("value of i, j and m are: " + i + "--"+ j + "--- " + m);
+					if(pattern.charAt(j)== str.charAt(m)){
+						//continue;
+						//System.out.println("value of i, j and m are: " + i + "--"+ j + "--- " + m 
+							//	+ pattern.charAt(j)  + "%%% " + str.charAt(m));
+						continue;
+					}
+				}
+				print_answer(true, pattern);
+			}
+			print_answer(false, pattern);
+
+		}		
+
+	}
+	
+	private static void print_answer(boolean b, String pattern) {
+		if(b == true){
+			System.out.println("its a match for: " + pattern);
+		}
+		if(b= false){
+			System.out.println("its not a match for: " + pattern);
+		}
+	}
+
+	public static void main(String[] args) {
+
+		String input = "abcNjAhNgAhGjhfhAljhRkhgRbhjbevfhO";
+		String match = "GjhfhAlj";
+		String notmatch = "123abct";
+		
+		checkMatch(input, match);
+		checkMatch(input, notmatch);
+				
+	}
+
+}
