@@ -1,0 +1,48 @@
+package DuplicateNumHash;
+// using inbuilt hashmap 
+/*
+ * Using the Logic: 
+ *  HashMap created with key as the input element, Value is the number of times this key is inserted. 
+ *  Check if element in input array is present as a key in HashMap
+ *  If not present, then put the key in HashMap, with Value as 1
+ *  If present , then put the Key in HashMap, with Value incremented by 1 i.e. previous value + 1
+ *  
+ *  Read through HashMap keys and values. If value is greater than 1 , then the number is a duplicate.
+ *   
+ */
+import java.util.*;
+
+public class duplicateNum {
+
+	public static void main(String[] args) {
+
+	HashMap<Integer, Integer> hashOb = new HashMap<Integer, Integer>();
+//	ArrayList<Integer> resultArr = new ArrayList<Integer>();
+	
+	int [] inputVal = {1,3,4,5,3,8,9,5,8,8,8};
+	
+	for(int i =0; i<inputVal.length; i++){
+		if(hashOb.containsKey(inputVal[i])){			
+			hashOb.put(inputVal[i], hashOb.get(inputVal[i])+1);
+		}
+		else{
+			hashOb.put(inputVal[i], 1);
+		}
+	System.out.println(hashOb);	
+	}
+	//read the has map to check which key is repeated 
+	for(HashMap.Entry<Integer, Integer> entry : hashOb.entrySet()){
+		if(entry.getValue() >1){
+			System.out.println("the duplicate element is: " + entry.getKey());
+		}
+	}
+	}
+}
+
+
+/*
+output is: 
+the duplicate element is: 3
+the duplicate element is: 5
+the duplicate element is: 8
+*/
