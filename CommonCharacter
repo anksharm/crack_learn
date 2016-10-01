@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class CommonCharacter {
+
+	public static void main(String[] args) {
+
+		String inputText = "checkcommonCharacter";
+		String substr = "moncart";
+		String result = "";
+
+		
+		HashMap<Character, Integer> mapA = new HashMap<Character, Integer>();
+		for(int i=0; i<inputText.length();i++){
+			if(mapA.containsKey(inputText.charAt(i))){
+				mapA.put(inputText.charAt(i), mapA.get(inputText.charAt(i)) +1);
+			}
+			else{
+				mapA.put(inputText.charAt(i),1);
+			}
+		}
+		for(int j=0 ; j< substr.length(); j++){
+		for(Map.Entry<Character, Integer> element : mapA.entrySet()){
+			System.out.println(element.getKey() + "^^^^" + element.getValue());
+			if(element.getKey().equals(substr.charAt(j))){
+				result = result + element.getKey() +  ",";
+			  } 
+		    }
+		
+		}
+		System.out.println("the characters common are: " + result);
+	}
+
+}
+/*
+Results is: 
+the characters common are: m,o,n,c,a,r,t,
+*/
