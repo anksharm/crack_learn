@@ -1,0 +1,54 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class CircularLinkedList
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+    LinkedList ll = new LinkedList();
+    Node A = new Node(1);
+    Node B= new Node(2);
+    Node C= new Node(3);
+  
+  //created a circular LinkedList.   
+    ll.head = A;
+    A.next = B;
+    B.next=C;
+    C.next =A;
+    
+Node n = A;
+
+while(n.next != null){
+    if(A.next == null){
+    System.out.println("linked List is empty");
+    break;
+    }
+if(n.next== A){
+    System.out.println("Circular LinkedList");
+    break;
+}
+n=n.next;
+}
+
+	}
+}
+
+class LinkedList{
+    
+    Node head;
+}
+
+class Node{
+    
+    int data;
+    Node next;
+    Node(int d){
+        data = d;
+        next= null; 
+    }
+}
