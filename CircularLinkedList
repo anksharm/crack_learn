@@ -23,11 +23,12 @@ class CircularLinkedList
     
 Node n = A;
 
-while(n.next != null){
-    if(A.next == null){
+if(A.next == null){
     System.out.println("linked List is empty");
-    break;
     }
+    
+while(n.next != null){
+    
 if(n.next== A){
     System.out.println("Circular LinkedList");
     break;
