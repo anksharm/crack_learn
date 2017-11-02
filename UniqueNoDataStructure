@@ -1,0 +1,48 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String str  = "abcbbdc";
+		boolean notUnique =false;
+		char [] strC = str.toCharArray();
+		
+		int j = strC.length-1; 
+		
+		for(int i =0; i<= strC.length -1; i++){
+			System.out.println("value of " + i + "and " + j);
+			if(strC[i] == strC[j] && i != j){
+				System.out.println("repeated value is "+ strC[i]);
+
+				notUnique = true;
+				break;
+			}
+			else{
+				i++;
+			}
+			if(i ==j)
+			{
+				System.out.println("value of if same is " + i + "and " + j);
+
+				j--;
+				i=0;
+			}
+		}
+		
+		
+		
+		if(notUnique ==true){
+			System.out.println("Its not unique " +str);
+		}else {
+			System.out.println("unique " +str);	
+		}
+				
+	}
+		
+}
