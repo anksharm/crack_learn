@@ -1,0 +1,146 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] nums = {1,2,3,4,5,6,7,8,9,10};
+		BinaryTree bt = new BinaryTree();
+		bt.root=new Node(nums[0]);
+	
+		BinaryTree tree = new BinaryTree();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node(5);
+		tree.root.right.left = new Node(6);
+		tree.root.right.right = new Node(7);
+		tree.root.left.left.left = new Node(8);
+		tree.root.left.left.right = new Node(9);
+		tree.root.right.left.left = new Node(10);
+		
+		 printInOrder(tree.root);
+		 
+		Node parent = bt.root;
+		
+		//lets divide the array, assuming the first half on left side of root, second half on other 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		int arrymid = (nums.length )/2;
+		for (int i = 1; i<= arrymid -1; i++)
+		
+		{
+			System.out.println("the parent is  " + parent.data);
+
+			insertNewNode(parent,nums[i]);
+			
+			if(parent.left != null){
+			parent = parent.left;
+			}
+			else if(parent.right != null){
+				parent = parent.right;
+			}
+			System.out.println("the parent node now is " + parent.data);
+
+		}
+		
+		parent.right = new Node(nums[nums.length/2]);
+		Node parent2 = parent.right;
+		for(int i=arrymid-1; i<= nums.length -1; i++){
+			
+			insertNewNode(parent2, nums[i]);
+			if(parent.left != null){
+				parent = parent.left;
+			}
+			else if(parent.right != null){
+				parent = parent.right;
+			}
+			
+			System.out.println("the parent node in second half is " + parent.data);
+		}
+		
+		System.out.println("the height of the tree is " + maxDepth(bt.root));
+		System.out.println("the height of the other tree is " + maxDepth(tree.root));
+
+		printInOrder(bt.root);
+	}
+	
+	public static int maxDepth(Node node){
+		if(node == null){
+			return 0;
+		}	
+		else {
+			int lDepth = maxDepth(node.left);
+			int rDepth = maxDepth(node.right);
+			
+			if(lDepth > rDepth){
+				return(lDepth +1);
+			}
+			else 
+			return (rDepth +1);
+		}
+	}
+	public static void insertNewNode(Node parent, int data){
+		System.out.println("the root node is " + parent.data + 
+		"value node is " + data);
+		if(parent.left == null){
+			
+			parent.left = new Node(data);
+			
+		}
+		 else if(parent.right == null){
+			parent.right = new Node(data);
+		}
+		if(parent.left != null && parent.right != null){
+			System.out.println("the parent.left is " + parent.left.data + 
+			" the parent.right is  " + parent.right.data);
+		}
+
+	}
+	
+	public static void printInOrder(Node node){
+		
+		if(node == null){
+			return;
+		}
+		printInOrder(node.left);
+		 System.out.print(node.data + " ");
+
+		printInOrder(node.right);
+	}
+}
+
+class Node{
+	int data; 
+	Node left; Node right;
+	
+	public Node(int data1){
+		data = data1;
+		right = left = null;
+	}
+}
+
+class BinaryTree{
+	
+	Node root;
+	
+	public BinaryTree(){
+		root = null;
+	}
+	
+}
