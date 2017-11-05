@@ -1,0 +1,84 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+	int[] nums = {1,2,3,4,5,6,7,8,9,10};
+	
+	BinaryTree bt = new BinaryTree(); 
+	int mid = nums[(nums.length)/2];
+	
+	bt.root = new Node(mid);
+	bt.root.left = createTreeNode(nums, 0, mid-1);
+	bt.root.right = createTreeNode(nums, mid+1, nums.length-1);
+	
+	printInOrder(bt.root);
+	System.out.println("the height of the tree is " + maxDepth(bt.root));
+
+
+	}
+	
+	public static Node createTreeNode(int[] arr, int start, int end){
+		if(end<start){
+			return null;
+		}
+		int mid = (start +end)/2;
+		Node n = new Node(arr[mid]);
+		n.left = createTreeNode(arr, start, mid-1);
+		n.right = createTreeNode(arr, mid+1, end);
+		return n;
+	}
+	
+	public static void printInOrder(Node node){
+		
+		if(node == null){
+			return;
+		}
+		printInOrder(node.left);
+		 System.out.print(node.data + " ");
+
+		printInOrder(node.right);
+	}
+	
+	public static int maxDepth(Node node){
+		if(node == null){
+			return 0;
+		}	
+		else {
+			int lDepth = maxDepth(node.left);
+			int rDepth = maxDepth(node.right);
+			
+			if(lDepth > rDepth){
+				return(lDepth +1);
+			}
+			else 
+			return (rDepth +1);
+		}
+	}
+}
+
+class Node { 
+	int data; 
+	Node right; Node left; 
+	
+	public Node(int data1){
+		data = data1; 
+		right = left = null; 
+	}
+	
+}
+
+class BinaryTree{
+	Node root; 
+	
+	public BinaryTree(){
+		root = null;
+	}
+}
