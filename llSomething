@@ -1,0 +1,84 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	BinaryTree bt = new BinaryTree(); 
+	bt.root = new Node(1);
+	bt.root.left = new Node(2);
+	bt.root.right = new Node(3);
+	bt.root.left.left = new Node(4);
+	bt.root.left.right = new Node(5);
+	
+	LinkedList ll = insertLNode(bt.root);
+
+	Lnode A= ll.head; 
+	
+	if(A.next == null){
+		System.out.println("Ll is empty");
+	}
+	
+	while(A != null {
+		System.out.println(" element is: " + A.data);
+	
+		A= A.next;
+
+		}
+
+	}
+	
+	public LinkedList insertLNode(Node node){
+		if(node == null){
+			return null;
+		}
+		LinkedList ll = new LinkedList();
+		ll.head = new Lnode(node.data); 
+		if(node.left != null){
+			ll.head.next= insertLNode(node.left);
+		}
+		if(node.right != null){
+			ll.head.next.next =insertLNode(node.right);
+		}
+	}
+}
+
+Class Lnode {
+	int data; 
+	Lnode next;
+	
+	public Lnode(int data1){
+		data = data1;
+	}
+}
+
+Class LinkedList{
+	LNode head; 
+	
+	public LinkedList {
+		head = null;
+	}
+}
+
+Class Node{
+	int data; 
+	Node right; Node left; 
+	
+	public Node(int data1){
+		data = data1;
+		right =left = null;
+	}
+}
+
+Class BinaryTree{
+	Node root; 
+	
+	public BinaryTree(){
+		root=null;
+	}
+}
