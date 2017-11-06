@@ -1,0 +1,49 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+
+	int[] nums = {1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20};
+	//assumption is: its an array of consecutive numbers from 1to n with one missing.
+    
+	int missing = findMissingConsecutive(nums, 20);
+	System.out.println("missing number is: " + missing);
+	
+	int[] numsUnordered = {1, 2, 4, 6, 3, 7, 8,9};
+	
+	System.out.println("missing number new is: " + findMissingUnordered(numsUnordered, 9));
+
+	}
+	
+	public static int findMissingUnordered(int[] nums, int k){
+		int missing = 0; 
+		int sumOfnums = (k)*(k+1)/2;
+		System.out.println("the sum is: " + sumOfnums);
+		for(int i=0; i<= nums.length-1; i++){
+			sumOfnums -= nums[i];
+			missing = sumOfnums;
+		}
+		return sumOfnums;
+
+	}
+	
+	public static int findMissingConsecutive(int[] nums, int k){
+	    int missing =0;
+	        for(int i=0; i<=nums.length-1; i++){
+	            if(nums[i+1] - nums[i] >1){
+	                missing = nums[i]+1;
+	                break;
+	            }
+	        }
+	return missing;
+	}
+
+	
+}
