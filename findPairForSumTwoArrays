@@ -1,0 +1,67 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] A = {-1, -2, 4, -6, 5, 7};
+		int[] B = {6, 3, 4, 0};
+		int x = 8;
+       
+		//findPairUsingArray(A,B,x);
+		findPairsUsingHash(A,B,x);
+        
+
+	}
+	
+	public static void findPairsUsingHash(int[] A, int[] B, int x){
+		//space complexity increases if given in other array.
+		int[] nums= null;
+		int[] otherArr = null;
+		if(A!= null && B != null){
+			
+			if(A.length < B.length){
+			 nums = B;
+			otherArr = A;
+			}
+			else {
+			nums = A;
+			otherArr = B;
+			}
+		}
+		HashMap<Integer, Integer> hashB = new HashMap<Integer, Integer>(); 
+		for(int i=0; i<= nums.length-1; i++){
+			hashB.put(nums[i], i);
+		}
+		
+		for(int j=0; j<= otherArr.length-1; j++){
+			int valInB = 8-otherArr[j];
+			//System.out.println("the pair from Hash is: " + valInB);
+
+			if(hashB.containsKey(valInB)){
+				System.out.println("the pair from Hash is: " + 
+				nums[hashB.get(valInB)] + "," + otherArr[j]);
+			}
+		}
+		
+	}
+	
+	
+	public static void findPairUsingArray(int[] A, int[] B, int x){
+		for(int i=0, j=0; i<= A.length-1 ; i++){
+
+		        	if(A[i] + B[j] == x){
+		        		System.out.println("the pair is: " + A[i] + ", " + B[j]);
+		        		j++; i=0;
+		        	}else if(i == A.length-1){
+		        		j++; i=0;
+		        	}
+		        	
+		 }	
+	}
+}
