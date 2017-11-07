@@ -1,0 +1,51 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		//String str = "cabaeed"; 
+		String str = "babad";
+		char[] strC = str.toCharArray(); 
+		boolean palin =false;
+		//HashMap<Integer, String> map = new HashMap<Integer, String>();
+		String longestP = null; 
+		int longestPlength =0;
+		for(int i=0; i<= str.length()-1; i++){
+			int end= strC.length-1;
+			while(i!=end){
+				String subString = str.substring(i, end);
+				palin = findPalin(subString);
+				end--;
+				if(palin){
+					if(subString.length() > longestPlength ){
+						longestP = subString;
+						longestPlength = longestP.length();
+					}
+				}
+			}
+		}
+		System.out.println(longestP);
+		System.out.println(longestPlength);
+
+		
+	}
+	public static boolean findPalin(String strC){
+		char[] str = strC.toCharArray();
+		int i = 0;
+		int j = strC.length()-1; 
+		boolean plaindrome = true;
+		while(j>=i){
+			if(str[i] != str[j]){
+				plaindrome = false;
+			}
+			i++; j--; 
+		}
+		return plaindrome;
+	}
+}
