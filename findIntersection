@@ -1,0 +1,122 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{	
+		int[] arr = {9,6, 4, 2, 3, 8};
+		int[] arr2 = {1, 2, 8, 6, 2};
+
+		LinkedList ll = createLinkedList(arr);
+		Node n = ll.head;
+
+		LinkedList l2 = createLinkedList(arr2);
+		Node n2 = l2.head;
+		
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(); 
+		while(n != null){
+			map.put(n.data, n.data); 
+			n= n.next;
+		}
+		
+		LinkedList result = new LinkedList();
+		Node rn = null;
+
+		while(n2 != null){
+			System.out.println("data in n2 is: " + n2.data);
+			if(map.containsKey(n2.data)){
+				if(result.head == null){
+					result.head = new Node(map.get(n2.data));
+					rn = result.head;
+					System.out.println("inside result head " + rn.data);
+
+				}	
+				else{
+					if(rn.getNext() == null){
+						rn.setNext(new Node(map.get(n2.data)));
+						System.out.println("inside result else head " + rn.data);
+
+						
+					}
+					else{
+						rn= rn.getNext();
+						rn.setNext(new Node(map.get(n2.data)));
+						System.out.println("inside else result *** head " +rn.data);
+
+	
+					}
+				}
+			}
+			n2 = n2.next;
+		}
+		
+		System.out.println("the result list is: ");
+		Node r = result.head;
+		while(r != null){
+			System.out.print(r.data + ", ");
+			r = r.next;
+		}
+	}
+	
+	public static LinkedList createLinkedList(int[] arr){
+		LinkedList ll = new LinkedList(); 
+		Node current = null;
+		for(int i=0; i<= arr.length-1; i++){
+			if(i==0){
+				ll.head = new Node(arr[i]);
+				current = ll.head;
+			}
+			else {
+				current.setNext(new Node(arr[i]));
+				current = current.getNext();		
+			}
+		}
+		return ll;
+
+	}
+
+}
+
+class Node{
+
+	int data; 
+	Node next; 
+	
+	public Node(int d){
+		data = d; 
+		next = null;
+	}
+	
+	public void setNext(Node n){
+		next = n;
+	}
+	
+	public Node getNext(){
+		return next;
+	}
+}
+
+class LinkedList{
+	Node head; 
+	Node tail;
+	Node previous;
+	public LinkedList(){
+		head =  tail = null; 
+		
+	}
+	
+	public void addLast(Node n){
+	//	tail.data = n.data;
+		tail =n;
+	}
+	
+	public void addFirstNode(Node n){
+		previous = n;
+	}
+	
+}
