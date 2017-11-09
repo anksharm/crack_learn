@@ -1,0 +1,128 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		BinaryTree bt = new BinaryTree();
+		
+		bt.root = new Node(23);
+		int[] arr = {18,19,20,22,23,26,28,29,30};
+		createBt(bt.root, arr);
+		
+		printInOrderTra(bt.root);
+
+
+	}
+	
+	public static void printInOrderTra(Node n){
+		//left-root-right
+		if(n == null){
+			System.out.println("Tree is Empty");
+		}
+		
+		printInOrderTra(n.getLeft());
+		System.out.print(n.data + ", ");
+		printInOrderTra(n.getRight());
+		
+	}
+	
+	public static void printPreOrder(Node n){
+		//root-left-right
+		if(n == null){
+			System.out.println("Tree is Empty");
+		}
+		
+		System.out.print(n.data + ", ");
+		printPreOrder(n.getLeft());
+		printPreOrder(n.getRight());
+		
+	}
+	
+	public static void printPostOrder(){
+		//left-right-root
+		if(n == null){
+			System.out.println("Tree is Empty");
+		}
+		
+		printPostOrder(n.getLeft());
+		printPostOrder(n.getRight());
+		System.out.print(n.data + ", ");
+
+		
+	}
+	
+	public static Node createBt(Node n, int[] arr){
+		if(n == null){
+			return null;
+		}
+		
+		int mid = 0;
+		for(int j=0; j<= arr.length-1; j++){
+			if(n.data == arr[j]){
+				mid= j;
+			}
+		}
+		
+		int[] leftSubtreeArr = null; 
+		int[] rightSubtreeArr = null; 
+		
+		if(mid != 0){
+			leftSubtreeArr = Arrays.copyOfRange(arr, 0, mid-1);
+			rightSubtreeArr = Arrays.copyOfRange(arr, mid+1, arr.length-1);
+		}
+		
+		for(int i=0; i<= arr.length-1; i++){
+			if(n.getLeft() == null){
+				n.setLeft(new Node(arr[i]));
+				createBt(n.getLeft(), leftSubtreeArr);
+			}
+			
+			if(n.getRight() == null){
+				n.setRight(new Node(arr[i]));
+				createBt(n.getRight(), Arrays.copyOfRange(arr, arr[i+1], rightSubtreeArr));
+			}
+		}
+	}
+}
+
+class Node{
+	int data; 
+	Node left; 
+	Node right; 
+	
+	public Node(int d){
+		data = d; 
+		left=right=null; 
+		
+	}
+	
+	public Node getLeft(){
+		return left;
+	}
+	
+	public Node getRight(){
+		return right;	
+	}
+	
+	public void setLeft(Node n){
+		left = n;
+	}
+	
+	public void setRight(Node n){
+		right = n;
+	}
+}
+
+class BinaryTree{
+	Node root; 
+	
+	public BinaryTree(){
+		root = null;
+	}
+}
