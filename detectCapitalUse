@@ -1,0 +1,46 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String word = "FlaG";
+		System.out.println(detectCapitalUse(word));
+	}
+	
+	public static boolean detectCapitalUse(String word){
+		 boolean allUpperCase = false; 
+		 boolean allLowerCase = false; 
+		 boolean isIncorrect = false;
+        
+		char[] charWord = word.toCharArray();
+		if(null != word){
+			for(int i=0; i<= charWord.length-1; i++){
+				if(Character.isUpperCase(charWord[i])){
+					allUpperCase = true;
+				}	
+			}
+            
+		            for(int i=0; i<= charWord.length-1; i++) {
+		                if(Character.isLowerCase(charWord[i])) {
+		                    allLowerCase = true;
+		                }
+		            }
+		            for(int i=0; i<=charWord.length-1; i++){
+		            	if(i==0 && Character.isUpperCase(charWord[i])) {
+		            		isIncorrect = true;
+		            	}
+		            	else if(Character.isUpperCase(charWord[i]) && isIncorrect == true) {
+		            		isIncorrect = false;
+		            	}
+		            }
+		}
+		
+		return allUpperCase || allLowerCase || isIncorrect;
+	}
+}
