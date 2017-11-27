@@ -1,0 +1,53 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		String A = "abcd"; 
+		String B = "cdabcdab";
+		StringBuilder S = new StringBuilder(A); 
+		int count = 0;  
+		while(S.length() < B.length()){
+			count++;
+			S.append(A);
+		}
+		
+		//System.out.println(checkSubString(S.toString(), B));
+		
+		while(checkSubString(S.toString(), B) == false) {
+			S.append(A);
+			count++; 
+
+		}
+		
+	
+		System.out.println(count);
+
+	}
+	
+public static boolean checkSubString(String string1, String string2) {
+        char c;
+        char d;
+        boolean match = false;
+        
+        for (int i = 0; i < string1.length(); i++) {
+            c = string1.charAt(i);
+            System.out.println(c + " 000");
+            for (int j = 0; i < string2.length(); j++) {
+                d = string2.charAt(j);
+                System.out.println(d + " ****");
+                if (c == d) {
+                	i++; j=0;
+                    match = true;
+                }  
+            }
+        }
+        return match;
+    }
+}
